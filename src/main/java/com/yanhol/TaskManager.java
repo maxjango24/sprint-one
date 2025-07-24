@@ -16,12 +16,16 @@ public class TaskManager {
     }
 
     public void removeTask(int id) {
-        tasks.removeIf(task -> task.getId() == id);
+        Task task = findTaskById(id);
+        if (task == null) {
+            throw new TaskNotFoundException("Task with id " + id + " not found");
+        }
+        tasks.remove(task);
     }
 
     public void markAsDone(int id) {
         tasks.stream().filter(task -> task.getId() == id).findFirst().ifPresent(task -> {
-            task.setDone(true);
+            task.setDone(true);;
         });
     }
 
