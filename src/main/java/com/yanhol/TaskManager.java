@@ -25,7 +25,7 @@ public class TaskManager {
 
     public void markAsDone(int id) {
         tasks.stream().filter(task -> task.getId() == id).findFirst().ifPresent(task -> {
-            task.setDone(true);;
+            task.setDone(true);
         });
     }
 
